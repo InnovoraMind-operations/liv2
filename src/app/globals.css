@@ -1,0 +1,609 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,700;1,6..96,400;1,6..96,700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ================================
+   DESIGN TOKENS
+================================ */
+:root {
+  /* ── Martin D-28 Palette ── */
+  --espresso: #0F0A05;           /* Indian rosewood body — near-black, purple-brown */
+  --mahogany: #3D2817;           /* Rich mahogany sides — deep red-brown */
+  --mahogany-light: #5A3A22;     /* Lighter mahogany, still warm red-brown */
+  --mahogany-red: rgba(139,69,19,0.05); /* Varnish reddish undertone */
+  --spruce-light: #E8D4B8;       /* Honey Sitka spruce soundboard — the glowing center */
+  --spruce-mid: #C9A87C;         /* Aged bridge pin brass / fret inlay gold */
+  --amber-spruce: #C9A87C;       /* Alias for CTAs / highlights */
+  --amber-bright: #DFC090;       /* Hover state of spruce brass */
+  --cream-rosette: #F0E6D2;      /* Warm ivory rosette text */
+  --cream-dim: #D4C4A8;          /* Secondary text, lighter warm tan for readability */
+  --navy-primary: #9BB5D4;       /* Light Periwinkle / Navy */
+  --navy-muted: #7A9BBF;         /* Steel Blue / Glow */
+  --dark-walnut: #0A0603;        /* Near-black ebony fretboard */
+  --shadow-deep: rgba(10, 6, 3, 0.85);
+  --glow-amber: rgba(201, 168, 124, 0.35);
+  --glow-spruce: rgba(232, 212, 184, 0.25);
+  --glow-navy: rgba(122, 155, 191, 0.35); /* Steel Blue Glow */
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-brand: 'Bodoni Moda', serif;
+}
+
+/* ================================
+   BASE RESET
+================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  background-color: var(--espresso);
+  color: var(--cream-rosette);
+  font-family: var(--font-sans);
+  line-height: 1.7;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ================================
+   GRAIN OVERLAY
+================================ */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.022;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23grain)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+}
+
+/* ================================
+   TYPOGRAPHY
+================================ */
+h1, h2, h3, h4 {
+  font-family: var(--font-serif);
+  color: var(--cream-rosette);
+  letter-spacing: 0.02em;
+}
+
+/* ================================
+   SCROLLBAR
+================================ */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--dark-walnut); }
+::-webkit-scrollbar-thumb { background: var(--mahogany); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--amber-spruce); }
+
+/* ================================
+   SECTION SPACING & LIGHTING
+================================ */
+.section-padding { padding: 120px 0; }
+
+section:not(#hero) {
+  position: relative;
+}
+
+section:not(#hero)::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 600px;
+  background: radial-gradient(ellipse 70% 100% at 50% 0%, rgba(232,212,184,0.05) 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* ================================
+   WOOD PANEL
+================================ */
+.wood-panel {
+  background: #0F0A05;
+  border: 1px solid rgba(232, 212, 184, 0.08); /* #E8D4B8 at 8% opacity */
+  border-right-color: rgba(10, 6, 3, 0.5);
+  border-bottom-color: rgba(10, 6, 3, 0.5);
+  box-shadow:
+    inset 1px 1px 0 rgba(232, 212, 184, 0.08),
+    inset -1px -1px 0 rgba(0,0,0,0.5),
+    0 8px 32px var(--shadow-deep);
+  position: relative;
+  overflow: hidden;
+}
+
+.wood-panel::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  /* Tight, very dark Indian rosewood grain */
+  background:
+    repeating-linear-gradient(
+      94deg,
+      transparent 0px, transparent 1px,
+      rgba(42, 26, 15, 0.7) 1px, rgba(42, 26, 15, 0.7) 2px,
+      transparent 2px, transparent 5px
+    );
+  pointer-events: none;
+}
+
+.wood-panel > *,
+.ebony-card > *,
+.poster-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ================================
+   GLASS MORPHISM WARM
+================================ */
+.glass-warm {
+  background: rgba(61, 40, 23, 0.95); /* Solidified for performance */
+  border: 1px solid rgba(201, 168, 124, 0.22);
+  box-shadow: 0 8px 32px rgba(10, 6, 3, 0.45), inset 0 1px 0 rgba(201, 168, 124, 0.12);
+  border-radius: 4px;
+}
+
+/* ================================
+   ROSETTE RING
+================================ */
+.rosette-ring {
+  position: relative;
+  border-radius: 50%;
+  /* Dark mahogany outer ring, spruce cream inlay bands, ivory highlight */
+  box-shadow:
+    0 0 0 3px var(--spruce-mid),
+    0 0 0 6px var(--mahogany),
+    0 0 0 9px var(--spruce-light),
+    0 0 0 12px var(--dark-walnut),
+    0 0 0 14px rgba(201, 168, 124, 0.5),
+    0 0 0 16px var(--dark-walnut),
+    0 0 0 18px rgba(240, 230, 210, 0.15),
+    0 0 50px rgba(232, 212, 184, 0.2);
+}
+
+/* ================================
+   BRASS BUTTON
+================================ */
+.btn-brass {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 32px;
+  /* Aged bridge pin brass gradient — gold-brown, NOT orange */
+  background: linear-gradient(135deg, #A8845A 0%, #DFBC88 40%, #B8905E 100%);
+  color: var(--dark-walnut);
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 0 #6B4828, 0 4px 16px rgba(201, 168, 124, 0.35), inset 0 1px 0 rgba(255,255,255,0.25);
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.btn-brass::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255,255,255,0.12) 0%, transparent 55%);
+  pointer-events: none;
+}
+
+.btn-brass:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 0 #6B4828, 0 8px 32px rgba(201, 168, 124, 0.5), inset 0 1px 0 rgba(255,255,255,0.25);
+  background: linear-gradient(135deg, #B8956A 0%, #EDD09A 40%, #C9A070 100%);
+}
+
+/* ================================
+   EBONY CARD
+================================ */
+.ebony-card {
+  background: linear-gradient(160deg, #080503 0%, #0F0A05 50%, #070402 100%);
+  border: 1px solid rgba(201, 168, 124, 0.14);
+  box-shadow: inset 0 1px 0 rgba(201, 168, 124, 0.07), 0 20px 60px rgba(0,0,0,0.7);
+  position: relative;
+}
+
+.ebony-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  /* Ebony fretboard: very fine tight grain */
+  background: repeating-linear-gradient(
+    90deg,
+    transparent 0px, transparent 22px,
+    rgba(201, 168, 124, 0.018) 22px, rgba(201, 168, 124, 0.018) 23px
+  );
+  pointer-events: none;
+}
+
+/* ================================
+   NAV LINK
+================================ */
+.nav-link {
+  color: var(--cream-dim);
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -3px; left: 0;
+  width: 0; height: 1px;
+  background: var(--amber-spruce);
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover { color: var(--amber-spruce); }
+.nav-link:hover::after { width: 100%; }
+
+/* ================================
+   STRING INPUT
+================================ */
+.string-input {
+  background: transparent;
+  border: none;
+  border-bottom: 1.5px solid rgba(201, 168, 124, 0.4);
+  color: var(--cream-rosette);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  padding: 12px 0;
+  width: 100%;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.string-input::placeholder { color: var(--cream-dim); opacity: 0.6; }
+.string-input:focus {
+  border-bottom-color: var(--spruce-light);
+  box-shadow: 0 2px 0 rgba(232, 212, 184, 0.4);
+}
+
+.string-select {
+  background: rgba(15, 10, 5, 0.85);
+  border: none;
+  border-bottom: 1.5px solid rgba(201, 168, 124, 0.4);
+  color: var(--cream-rosette);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  padding: 12px 0;
+  width: 100%;
+  outline: none;
+  cursor: pointer;
+  appearance: none;
+  transition: border-color 0.3s ease;
+}
+
+.string-select:focus { border-bottom-color: var(--spruce-light); }
+.string-select option { background: var(--espresso); color: var(--cream-rosette); }
+
+/* ================================
+   SPRUCE BUTTON
+================================ */
+.btn-spruce {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px 48px;
+  /* Sitka spruce soundboard — light honey grain texture */
+  background: linear-gradient(135deg, #7A5C38 0%, #A07848 30%, #C8A468 60%, #8A6038 100%);
+  color: var(--cream-rosette);
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: 1px solid rgba(201, 168, 124, 0.3);
+  border-radius: 2px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 0 #4A3018, 0 8px 32px rgba(120, 80, 40, 0.45), inset 0 1px 0 rgba(240, 230, 210, 0.2);
+  transition: all 0.4s ease;
+  text-decoration: none;
+}
+
+.btn-spruce::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent 0px, transparent 3px,
+    rgba(240, 230, 210, 0.04) 3px, rgba(240, 230, 210, 0.04) 4px
+  );
+  pointer-events: none;
+}
+
+.btn-spruce:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 0 #4A3018, 0 16px 48px rgba(201, 168, 124, 0.55), inset 0 1px 0 rgba(240, 230, 210, 0.3);
+  background: linear-gradient(135deg, #8A6840 0%, #C09060 30%, #E0BC80 60%, #9A7040 100%);
+}
+
+/* ================================
+   BRASS TAG
+================================ */
+.brass-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  background: rgba(201, 168, 124, 0.1);
+  border: 1px solid rgba(201, 168, 124, 0.28);
+  color: var(--spruce-mid);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  border-radius: 2px;
+}
+
+/* ================================
+   REVEAL ANIMATION
+================================ */
+.reveal-element {
+  opacity: 0;
+  transform: translateY(30px);
+  filter: blur(4px);
+  transition: opacity 0.8s ease, transform 0.8s ease, filter 0.8s ease;
+}
+
+.reveal-element.revealed {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+/* ================================
+   POSTER CARD
+================================ */
+.poster-card {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(160deg, #3a2010 0%, #2a1608 40%, #4a2c18 100%);
+  border: 1px solid rgba(212, 165, 116, 0.2);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.4), inset 0 1px 0 rgba(212, 165, 116, 0.1);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.poster-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6), inset 0 1px 0 rgba(212, 165, 116, 0.15);
+}
+
+.poster-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    88deg,
+    transparent 0px, transparent 30px,
+    rgba(212, 165, 116, 0.02) 30px, rgba(212, 165, 116, 0.02) 31px
+  );
+  pointer-events: none;
+}
+
+/* ================================
+   VINYL RECORD
+================================ */
+@keyframes spin-vinyl { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+.vinyl-record { animation: spin-vinyl 10s linear infinite; border-radius: 50%; }
+
+/* ================================
+   VU METER
+================================ */
+@keyframes vu-peak { 0%, 100% { height: 30%; } 50% { height: 95%; } }
+.vu-bar {
+  animation: vu-peak var(--duration, 0.8s) ease-in-out infinite alternate;
+  animation-delay: var(--delay, 0s);
+}
+
+/* ================================
+   FLOATING PARTICLES
+================================ */
+@keyframes float-up {
+  0% { transform: translateY(0) translateX(0); opacity: 0; }
+  10% { opacity: 0.6; }
+  90% { opacity: 0.3; }
+  100% { transform: translateY(-100px) translateX(var(--drift, 20px)); opacity: 0; }
+}
+
+.dust-particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: var(--amber-spruce);
+  animation: float-up var(--duration, 4s) ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+}
+
+/* ================================
+   PAGE LOAD STRUM
+================================ */
+@keyframes strum-sweep {
+  0% { transform: translateX(-100%) skewX(-5deg); opacity: 0; }
+  20% { opacity: 0.9; }
+  80% { opacity: 0.7; }
+  100% { transform: translateX(200vw) skewX(-5deg); opacity: 0; }
+}
+
+.strum-line {
+  position: fixed;
+  top: 0; left: 0;
+  width: 3px; height: 100vh;
+  pointer-events: none;
+  z-index: 10000;
+  animation: strum-sweep 1s ease-in-out forwards;
+}
+
+/* ================================
+   PERFORMANCE & HARDWARE ACCEL
+================================ */
+section { contain: layout paint; }
+.fretboard-track, .playhead, .particle, .dust-particle {
+  will-change: transform;
+  transform: translateZ(0);
+}
+body.is-scrolling .ebony-card { box-shadow: 0 4px 20px rgba(0,0,0,0.3) !important; }
+body.is-scrolling .wood-panel::before { opacity: 0.3 !important; }
+body.is-scrolling::before { opacity: 0.01 !important; }
+
+@media (pointer: coarse) {
+  .particle-field, .dust-particle, canvas { display: none !important; }
+}
+
+/* ================================
+   WAVE ANIMATION (strings)
+================================ */
+@keyframes string-wave {
+  0%, 100% { d: path('M 1,0 Q 1.5,20 1,40 Q 0.5,60 1,80 Q 1.5,100 1,120'); }
+  50% { d: path('M 1,0 Q -0.5,20 1,40 Q 2.5,60 1,80 Q -0.5,100 1,120'); }
+}
+
+/* ================================
+   MOBILE
+================================ */
+@media (max-width: 768px) {
+  .section-padding { padding: 80px 0; }
+}
+
+/* ================================
+   REDUCED MOTION
+================================ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .vinyl-record { animation: none; }
+}
+
+/* ================================
+   SELECTION
+================================ */
+::selection { background: rgba(212, 165, 116, 0.3); color: var(--cream-rosette); }
+
+/* ================================
+   FOCUS
+================================ */
+:focus-visible { outline: 2px solid var(--amber-spruce); outline-offset: 3px; }
+
+/* ================================
+   FRET DOT
+================================ */
+.fret-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--cream-rosette) 0%, var(--cream-dim) 100%);
+  box-shadow: 0 0 8px rgba(245, 230, 211, 0.4);
+}
+
+/* ================================
+   SPOTLIGHT
+================================ */
+.spotlight-gradient {
+  background: radial-gradient(ellipse 60% 50% at 50% 20%, rgba(212, 165, 116, 0.12) 0%, transparent 70%);
+}
+
+/* ================================
+   PROCESS PLAYHEAD
+================================ */
+.playhead {
+  width: 60px; height: 3px;
+  background: linear-gradient(90deg, transparent, var(--amber-spruce), transparent);
+  box-shadow: 0 0 12px var(--amber-spruce), 0 0 24px rgba(212, 165, 116, 0.4);
+  border-radius: 2px;
+}
+
+/* ================================
+   NAVBAR RESPONSIVE
+================================ */
+@media (min-width: 769px) { .nav-mobile { display: none !important; } }
+@media (max-width: 768px) { .nav-desktop { display: none !important; } }
+
+/* ================================
+   SERVICES RESPONSIVE
+================================ */
+@media (max-width: 768px) {
+  .services-grid {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+}
+
+/* ================================
+   CREDIBILITY RESPONSIVE
+================================ */
+@media (max-width: 768px) {
+  .bento-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .bento-grid > div {
+    grid-column: 1 / 2 !important;
+    grid-row: auto !important;
+  }
+}
+
+/* ================================
+   PROCESS RESPONSIVE
+================================ */
+@media (max-width: 768px) {
+  .neck-hide-mobile { display: none !important; }
+  .stage-row {
+    grid-template-columns: 1fr !important;
+  }
+  .stage-row > div:first-child,
+  .stage-row > div:last-child {
+    visibility: visible !important;
+    text-align: left !important;
+    padding: 0 !important;
+  }
+  .stage-row > div:nth-child(2) { display: none; }
+}
+
+/* ================================
+   CASE STUDIES RESPONSIVE
+================================ */
+@media (max-width: 768px) {
+  .cases-grid {
+    grid-template-columns: 1fr !important;
+    grid-template-rows: auto !important;
+  }
+  .cases-grid > div {
+    grid-column: 1 / 2 !important;
+    grid-row: auto !important;
+  }
+}
+
+/* ================================
+   FOOTER RESPONSIVE
+================================ */
+@media (max-width: 768px) {
+  .footer-grid {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+}
+
