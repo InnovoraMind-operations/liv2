@@ -92,7 +92,7 @@ const services: Service[] = [
     title: 'The Conductor',
     tagline: 'Patterns revealed across the orchestra of your data.',
     description:
-      'The conductor sees every instrument, every timing, every crescendo. We survey your entire data landscape, reveal hidden harmonics, and orchestrate insights that drive decision.',
+      'The conductor sees every instrument, every timing, every dynamic shift. We survey your entire data landscape, reveal hidden harmonics, and orchestrate insights that drive decision.',
     color: '#F0E6D2',
     colorDim: 'rgba(240,230,210,0.1)',
     glowColor: 'rgba(240,230,210,0.3)',
