@@ -299,9 +299,9 @@ export default function Hero() {
             textShadow: '0 2px 30px rgba(240, 230, 210, 0.15)',
           }}
         >
-          Crescendo
+          Vorqentra
           <br />
-          <span style={{ color: '#1a1208', fontStyle: 'italic', textShadow: 'none' }}>AI</span>
+          <span style={{ color: '#1a1208', fontStyle: 'italic', textShadow: 'none' }}>Labs</span>
         </h1>
 
         {/* Tagline */}

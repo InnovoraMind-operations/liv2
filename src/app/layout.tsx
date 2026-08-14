@@ -3,20 +3,20 @@ import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
 
 export const metadata: Metadata = {
-  title: "Crescendo AI — We Compose Intelligence",
+  title: "Vorqentra Labs — We Compose Intelligence",
   description:
-    "Crescendo AI is a premium consultancy specializing in Artificial Intelligence, Machine Learning, and Data Science. We compose intelligent systems with the precision of a master craftsman.",
+    "Vorqentra Labs is a premium consultancy specializing in Artificial Intelligence, Machine Learning, and Data Science. We compose intelligent systems with the precision of a master craftsman.",
   keywords: [
     "AI consultancy",
     "machine learning",
     "data science",
     "artificial intelligence",
-    "Crescendo AI",
+    "Vorqentra Labs",
     "enterprise AI",
   ],
-  authors: [{ name: "Crescendo AI" }],
+  authors: [{ name: "Vorqentra Labs" }],
   openGraph: {
-    title: "Crescendo AI — We Compose Intelligence",
+    title: "Vorqentra Labs — We Compose Intelligence",
     description:
       "Premium AI, ML, and Data Science consultancy. Intelligence crafted with artisanal precision.",
     type: "website",

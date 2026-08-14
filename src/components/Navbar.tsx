@@ -58,7 +58,7 @@ export default function Navbar() {
             <circle cx="11" cy="11" r="4" fill="var(--amber-spruce)" opacity="0.35" />
             <circle cx="11" cy="11" r="2" fill="var(--amber-spruce)" />
           </svg>
-          Crescendo <span style={{ fontStyle: 'italic' }}>AI</span>
+          Vorqentra <span style={{ fontStyle: 'italic' }}>Labs</span>
         </a>
 
         {/* Desktop links */}

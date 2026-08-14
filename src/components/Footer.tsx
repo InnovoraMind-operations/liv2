@@ -53,7 +53,7 @@ export default function Footer() {
                 <circle cx="11" cy="11" r="4" fill="var(--amber-spruce)" opacity="0.35" />
                 <circle cx="11" cy="11" r="2" fill="var(--amber-spruce)" />
               </svg>
-              Crescendo <span style={{ fontStyle: 'italic' }}>AI</span>
+              Vorqentra <span style={{ fontStyle: 'italic' }}>Labs</span>
             </div>
             <p
               style={{
@@ -206,7 +206,7 @@ export default function Footer() {
               opacity: 0.35,
             }}
           >
-            © {currentYear} Crescendo AI. All rights reserved.
+            © {currentYear} Vorqentra Labs. All rights reserved.
           </p>
           <div style={{ display: 'flex', gap: '24px' }}>
             {['Privacy', 'Terms', 'Ethics Policy'].map((item) => (

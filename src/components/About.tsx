@@ -82,7 +82,7 @@ export default function About() {
               marginBottom: '24px',
             }}
           >
-            Crescendo AI is a premium consultancy that makes Artificial Intelligence, Machine Learning, and Data Science work for your business. We take the complexity out of advanced technology, building custom, high-performing systems that deliver real results.
+            Vorqentra Labs is a premium consultancy that makes Artificial Intelligence, Machine Learning, and Data Science work for your business. We take the complexity out of advanced technology, building custom, high-performing systems that deliver real results.
           </p>
           <p
             style={{
