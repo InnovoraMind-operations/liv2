@@ -65,7 +65,7 @@ export default function Footer() {
                 opacity: 0.7,
               }}
             >
-              We compose intelligence.
+              We compose intelligence.....
             </p>
             <p
               style={{

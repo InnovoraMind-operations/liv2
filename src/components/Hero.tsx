@@ -316,7 +316,7 @@ export default function Hero() {
             fontWeight: 300,
           }}
         >
-          We compose intelligence.
+          We compose intelligence.....
         </p>
 
         {/* Soundhole + Canvas */}
