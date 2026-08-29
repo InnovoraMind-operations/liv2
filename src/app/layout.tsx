@@ -3,6 +3,7 @@ import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://vorqentra.vercel.app"),
   title: "Vorqentra Labs — We Compose Intelligence",
   description:
     "Vorqentra Labs is a premium consultancy specializing in Artificial Intelligence, Machine Learning, and Data Science. We compose intelligent systems with the precision of a master craftsman.",
@@ -15,11 +16,27 @@ export const metadata: Metadata = {
     "enterprise AI",
   ],
   authors: [{ name: "Vorqentra Labs" }],
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon.png", type: "image/png", sizes: "32x32" },
+      { url: "/icon-192.png", type: "image/png", sizes: "192x192" },
+    ],
+    apple: "/apple-icon.png",
+  },
   openGraph: {
     title: "Vorqentra Labs — We Compose Intelligence",
     description:
       "Premium AI, ML, and Data Science consultancy. Intelligence crafted with artisanal precision.",
     type: "website",
+    images: [
+      {
+        url: "/logo.jpg",
+        width: 1024,
+        height: 1024,
+        alt: "Vorqentra Labs",
+      },
+    ],
   },
 };
 

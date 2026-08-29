@@ -53,12 +53,24 @@ export default function Navbar() {
             gap: '10px',
           }}
         >
-          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
-            <circle cx="11" cy="11" r="10" stroke="var(--amber-spruce)" strokeWidth="1.5" fill="none" />
-            <circle cx="11" cy="11" r="4" fill="var(--amber-spruce)" opacity="0.35" />
-            <circle cx="11" cy="11" r="2" fill="var(--amber-spruce)" />
-          </svg>
-          Vorqentra <span style={{ fontStyle: 'italic' }}>Labs</span>
+          <img
+            src="/logo-symbol.jpg"
+            alt="Vorqentra Labs"
+            width={34}
+            height={34}
+            style={{
+              width: '34px',
+              height: '34px',
+              borderRadius: '50%',
+              objectFit: 'cover',
+              border: '1.5px solid rgba(201, 168, 124, 0.5)',
+              boxShadow: '0 0 12px rgba(201, 168, 124, 0.25)',
+              display: 'block',
+            }}
+          />
+          <span>
+            Vorqentra <span style={{ fontStyle: 'italic' }}>Labs</span>
+          </span>
         </a>
 
         {/* Desktop links */}

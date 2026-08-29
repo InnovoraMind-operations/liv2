@@ -270,6 +270,40 @@ export default function Hero() {
 
       {/* Main content */}
       <div style={{ textAlign: 'center', position: 'relative', zIndex: 2, maxWidth: '900px', width: '100%' }}>
+        {/* Brand Emblem */}
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            marginBottom: '28px',
+          }}
+        >
+          <div
+            style={{
+              width: '88px',
+              height: '88px',
+              borderRadius: '50%',
+              padding: '2.5px',
+              background: 'linear-gradient(135deg, #C9A87C 0%, #3D2817 50%, #C9A87C 100%)',
+              boxShadow: '0 0 24px rgba(201, 168, 124, 0.35), 0 8px 24px rgba(0,0,0,0.5)',
+            }}
+          >
+            <img
+              src="/logo-symbol.jpg"
+              alt="Vorqentra Labs"
+              width={83}
+              height={83}
+              style={{
+                width: '100%',
+                height: '100%',
+                borderRadius: '50%',
+                objectFit: 'cover',
+                display: 'block',
+              }}
+            />
+          </div>
+        </div>
+
         {/* Liner note tag */}
         <p
           style={{
