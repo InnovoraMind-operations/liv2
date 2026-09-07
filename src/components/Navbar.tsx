@@ -1,9 +1,12 @@
 'use client';
 import { useEffect, useState } from 'react';
+import { usePathname } from 'next/navigation';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const isHome = pathname === '/';
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 60);
@@ -12,11 +15,11 @@ export default function Navbar() {
   }, []);
 
   const links = [
-    { href: '#about', label: 'About' },
-    { href: '#services', label: 'Services' },
-    { href: '#credibility', label: 'Our Work' },
-    { href: '#process', label: 'Process' },
-    { href: '#contact', label: 'Contact' },
+    { href: '/about', label: 'About', active: pathname === '/about' },
+    { href: isHome ? '#services' : '/#services', label: 'Services' },
+    { href: isHome ? '#credibility' : '/#credibility', label: 'Our Work' },
+    { href: isHome ? '#process' : '/#process', label: 'Process' },
+    { href: isHome ? '#contact' : '/#contact', label: 'Contact' },
   ];
 
   return (
@@ -40,7 +43,7 @@ export default function Navbar() {
       >
         {/* Logo */}
         <a
-          href="#hero"
+          href="/"
           style={{
             fontFamily: 'var(--font-brand)',
             fontSize: '1.35rem',
@@ -76,14 +79,27 @@ export default function Navbar() {
         {/* Desktop links */}
         <div style={{ display: 'flex', gap: '36px', alignItems: 'center' }} className="nav-desktop">
           {links.map((link) => (
-            <a key={link.href} href={link.href} className="nav-link">
+            <a
+              key={link.href}
+              href={link.href}
+              className="nav-link"
+              style={{
+                color: link.active ? 'var(--amber-spruce)' : undefined,
+                borderBottom: link.active ? '1px solid var(--amber-spruce)' : undefined,
+                paddingBottom: link.active ? '2px' : undefined,
+              }}
+            >
               {link.label}
             </a>
           ))}
         </div>
 
         {/* CTA desktop */}
-        <a href="#contact" className="btn-brass nav-desktop" style={{ padding: '10px 24px', fontSize: '0.85rem' }}>
+        <a
+          href={isHome ? '#contact' : '/#contact'}
+          className="btn-brass nav-desktop"
+          style={{ padding: '10px 24px', fontSize: '0.85rem' }}
+        >
           Book a Session
         </a>
 
@@ -140,7 +156,12 @@ export default function Navbar() {
               {link.label}
             </a>
           ))}
-          <a href="#contact" className="btn-brass" style={{ textAlign: 'center', marginTop: '8px' }} onClick={() => setMenuOpen(false)}>
+          <a
+            href={isHome ? '#contact' : '/#contact'}
+            className="btn-brass"
+            style={{ textAlign: 'center', marginTop: '8px' }}
+            onClick={() => setMenuOpen(false)}
+          >
             Book a Session
           </a>
         </div>

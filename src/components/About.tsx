@@ -94,6 +94,24 @@ export default function About() {
           >
             We don't just write code; we compose intelligent systems with precision and care. Whether you need generative architectures, predictive models, or deep data insights, we orchestrate the solution so you can focus on the music.
           </p>
+
+          <div style={{ marginTop: '36px', textAlign: 'center' }}>
+            <a
+              href="/about"
+              className="btn-brass"
+              style={{
+                fontSize: '0.9rem',
+                padding: '12px 32px',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                textDecoration: 'none',
+              }}
+            >
+              <span>Explore Our Story & Leadership</span>
+              <span style={{ fontSize: '1.2rem', lineHeight: 1 }}>→</span>
+            </a>
+          </div>
         </div>
       </div>
     </section>
