@@ -8,11 +8,6 @@ const stats = [
   { value: '99.1%', label: 'Uptime SLA', pos: '12th', note: 'zero critical incidents' },
 ];
 
-const clients = [
-  { name: 'InnovoraMind', sector: 'Tech Consultancy' },
-  { name: 'Eminsphere', sector: 'Research' },
-  { name: 'TechryonGlobal', sector: 'Tech Consultancy' },
-];
 
 export default function Credibility() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -313,52 +308,7 @@ export default function Credibility() {
           </div>
         </div>
 
-        {/* Client logos */}
-        <div
-          style={{
-            marginTop: '64px',
-            opacity: revealed ? 1 : 0,
-            transform: revealed ? 'translateY(0)' : 'translateY(30px)',
-            transition: 'opacity 0.8s ease 0.4s, transform 0.8s ease 0.4s',
-          }}
-        >
-          <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.65rem', letterSpacing: '0.25em', color: 'var(--cream-dim)', textTransform: 'uppercase', textAlign: 'center', marginBottom: '32px', opacity: 0.5 }}>
-            Trusted by
-          </p>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', justifyContent: 'center' }}>
-            {clients.map((client, i) => (
-              <div
-                key={i}
-                style={{
-                  padding: '12px 24px',
-                  background: 'linear-gradient(135deg, #1e140a, #2a1a0c)',
-                  border: '1px solid rgba(212,165,116,0.12)',
-                  borderRadius: '2px',
-                  cursor: 'default',
-                  transition: 'all 0.3s ease',
-                  boxShadow: 'inset 0 1px 0 rgba(212,165,116,0.05)',
-                }}
-                onMouseEnter={(e) => {
-                  const el = e.currentTarget;
-                  el.style.borderColor = 'rgba(212,165,116,0.3)';
-                  el.style.boxShadow = 'inset 0 1px 0 rgba(212,165,116,0.1), 0 4px 16px rgba(0,0,0,0.4)';
-                }}
-                onMouseLeave={(e) => {
-                  const el = e.currentTarget;
-                  el.style.borderColor = 'rgba(212,165,116,0.12)';
-                  el.style.boxShadow = 'inset 0 1px 0 rgba(212,165,116,0.05)';
-                }}
-              >
-                <div style={{ fontFamily: 'var(--font-serif)', fontSize: '1rem', fontWeight: 600, color: 'var(--cream-dim)', letterSpacing: '0.06em' }}>
-                  {client.name}
-                </div>
-                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.6rem', color: 'var(--amber-spruce)', opacity: 0.6, letterSpacing: '0.15em', marginTop: '2px' }}>
-                  {client.sector}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+
       </div>
 
     </section>
