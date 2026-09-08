@@ -27,8 +27,8 @@ export default function Footer() {
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: '2fr 1fr 1fr',
-            gap: '48px',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+            gap: '40px',
             marginBottom: '60px',
           }}
           className="footer-grid"
@@ -161,10 +161,10 @@ export default function Footer() {
             </h4>
             <nav aria-label="Footer studio links">
               {[
-                { label: 'About Us', href: '#about' },
-                { label: 'Our Work', href: '#credibility' },
-                { label: 'Process', href: '#process' },
-                { label: 'Book a Session', href: '#contact' },
+                { label: 'About Us', href: '/about' },
+                { label: 'Our Work', href: '/#credibility' },
+                { label: 'Process', href: '/#process' },
+                { label: 'Book a Session', href: '/#contact' },
               ].map((link) => (
                 <a
                   key={link.label}
@@ -194,6 +194,79 @@ export default function Footer() {
                 </a>
               ))}
             </nav>
+          </div>
+
+          {/* Inquiries */}
+          <div>
+            <h4
+              style={{
+                fontFamily: 'var(--font-mono)',
+                fontSize: '0.65rem',
+                letterSpacing: '0.25em',
+                color: 'var(--amber-spruce)',
+                textTransform: 'uppercase',
+                marginBottom: '20px',
+                opacity: 0.7,
+              }}
+            >
+              Inquiries
+            </h4>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+              <div>
+                <span style={{ display: 'block', fontFamily: 'var(--font-mono)', fontSize: '0.6rem', letterSpacing: '0.1em', color: 'var(--amber-spruce)', textTransform: 'uppercase', opacity: 0.7, marginBottom: '2px' }}>
+                  Support & Clients
+                </span>
+                <a
+                  href="mailto:support@vorqentralabs.com"
+                  style={{
+                    fontFamily: 'var(--font-mono)',
+                    fontSize: '0.78rem',
+                    color: 'var(--cream-dim)',
+                    textDecoration: 'none',
+                    opacity: 0.75,
+                    transition: 'color 0.2s ease, opacity 0.2s ease',
+                    wordBreak: 'break-all',
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.color = 'var(--cream-rosette)';
+                    e.currentTarget.style.opacity = '1';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.color = 'var(--cream-dim)';
+                    e.currentTarget.style.opacity = '0.75';
+                  }}
+                >
+                  support@vorqentralabs.com
+                </a>
+              </div>
+              <div>
+                <span style={{ display: 'block', fontFamily: 'var(--font-mono)', fontSize: '0.6rem', letterSpacing: '0.1em', color: 'var(--navy-primary)', textTransform: 'uppercase', opacity: 0.7, marginBottom: '2px' }}>
+                  Board & Executive
+                </span>
+                <a
+                  href="mailto:board@vorqentralabs.com"
+                  style={{
+                    fontFamily: 'var(--font-mono)',
+                    fontSize: '0.78rem',
+                    color: 'var(--cream-dim)',
+                    textDecoration: 'none',
+                    opacity: 0.75,
+                    transition: 'color 0.2s ease, opacity 0.2s ease',
+                    wordBreak: 'break-all',
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.color = 'var(--cream-rosette)';
+                    e.currentTarget.style.opacity = '1';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.color = 'var(--cream-dim)';
+                    e.currentTarget.style.opacity = '0.75';
+                  }}
+                >
+                  board@vorqentralabs.com
+                </a>
+              </div>
+            </div>
           </div>
         </div>
 

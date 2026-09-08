@@ -69,7 +69,7 @@ export default function Cta() {
 
       <div
         style={{
-          maxWidth: '620px',
+          maxWidth: '680px',
           margin: '0 auto',
           position: 'relative',
           zIndex: 1,
@@ -117,7 +117,7 @@ export default function Cta() {
             fontStyle: 'italic',
             fontSize: '1.1rem',
             color: 'var(--cream-dim)',
-            marginBottom: '64px',
+            marginBottom: '48px',
             lineHeight: 1.6,
             opacity: revealed ? 1 : 0,
             transform: revealed ? 'translateY(0)' : 'translateY(20px)',
@@ -126,6 +126,214 @@ export default function Cta() {
         >
           Tell us what you&apos;re building. We&apos;ll tell you how to compose it.
         </p>
+
+        {/* Direct Email Inquiries */}
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+            gap: '16px',
+            marginBottom: '48px',
+            textAlign: 'left',
+            opacity: revealed ? 1 : 0,
+            transform: revealed ? 'translateY(0)' : 'translateY(20px)',
+            transition: 'opacity 0.8s ease 0.25s, transform 0.8s ease 0.25s',
+          }}
+        >
+          {/* Support Email */}
+          <a
+            href="mailto:support@vorqentralabs.com"
+            style={{
+              display: 'block',
+              padding: '20px 22px',
+              borderRadius: '3px',
+              background: 'linear-gradient(135deg, rgba(25, 16, 8, 0.95), rgba(12, 8, 4, 0.98))',
+              border: '1px solid rgba(201, 168, 124, 0.2)',
+              textDecoration: 'none',
+              transition: 'all 0.3s ease',
+              boxShadow: '0 4px 20px rgba(0, 0, 0, 0.4)',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.borderColor = 'var(--amber-spruce)';
+              e.currentTarget.style.transform = 'translateY(-2px)';
+              e.currentTarget.style.boxShadow = '0 8px 24px rgba(201, 168, 124, 0.2)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.borderColor = 'rgba(201, 168, 124, 0.2)';
+              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.4)';
+            }}
+          >
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '8px' }}>
+              <div
+                style={{
+                  width: '28px',
+                  height: '28px',
+                  borderRadius: '50%',
+                  background: 'rgba(201, 168, 124, 0.12)',
+                  border: '1px solid rgba(201, 168, 124, 0.3)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: 'var(--amber-spruce)',
+                  flexShrink: 0,
+                }}
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                  <polyline points="22,6 12,13 2,6" />
+                </svg>
+              </div>
+              <span
+                style={{
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: '0.62rem',
+                  letterSpacing: '0.2em',
+                  color: 'var(--amber-spruce)',
+                  textTransform: 'uppercase',
+                  fontWeight: 600,
+                }}
+              >
+                Technical & Client Support
+              </span>
+            </div>
+            <div
+              style={{
+                fontFamily: 'var(--font-mono)',
+                fontSize: '0.95rem',
+                color: 'var(--cream-rosette)',
+                fontWeight: 500,
+                letterSpacing: '0.02em',
+                marginBottom: '4px',
+              }}
+            >
+              support@vorqentralabs.com
+            </div>
+            <p
+              style={{
+                fontFamily: 'var(--font-sans)',
+                fontSize: '0.75rem',
+                color: 'var(--cream-dim)',
+                opacity: 0.7,
+                margin: 0,
+                lineHeight: 1.4,
+              }}
+            >
+              Direct channel for technical consultations & client assistance
+            </p>
+          </a>
+
+          {/* Board Email */}
+          <a
+            href="mailto:board@vorqentralabs.com"
+            style={{
+              display: 'block',
+              padding: '20px 22px',
+              borderRadius: '3px',
+              background: 'linear-gradient(135deg, rgba(14, 18, 26, 0.95), rgba(8, 10, 15, 0.98))',
+              border: '1px solid rgba(155, 181, 212, 0.22)',
+              textDecoration: 'none',
+              transition: 'all 0.3s ease',
+              boxShadow: '0 4px 20px rgba(0, 0, 0, 0.4)',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.borderColor = 'var(--navy-primary)';
+              e.currentTarget.style.transform = 'translateY(-2px)';
+              e.currentTarget.style.boxShadow = '0 8px 24px rgba(155, 181, 212, 0.2)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.borderColor = 'rgba(155, 181, 212, 0.22)';
+              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.4)';
+            }}
+          >
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '8px' }}>
+              <div
+                style={{
+                  width: '28px',
+                  height: '28px',
+                  borderRadius: '50%',
+                  background: 'rgba(155, 181, 212, 0.12)',
+                  border: '1px solid rgba(155, 181, 212, 0.3)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: 'var(--navy-primary)',
+                  flexShrink: 0,
+                }}
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                  <path d="M2 17l10 5 10-5" />
+                  <path d="M2 12l10 5 10-5" />
+                </svg>
+              </div>
+              <span
+                style={{
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: '0.62rem',
+                  letterSpacing: '0.2em',
+                  color: 'var(--navy-primary)',
+                  textTransform: 'uppercase',
+                  fontWeight: 600,
+                }}
+              >
+                Board & Executive
+              </span>
+            </div>
+            <div
+              style={{
+                fontFamily: 'var(--font-mono)',
+                fontSize: '0.95rem',
+                color: 'var(--cream-rosette)',
+                fontWeight: 500,
+                letterSpacing: '0.02em',
+                marginBottom: '4px',
+              }}
+            >
+              board@vorqentralabs.com
+            </div>
+            <p
+              style={{
+                fontFamily: 'var(--font-sans)',
+                fontSize: '0.75rem',
+                color: 'var(--cream-dim)',
+                opacity: 0.7,
+                margin: 0,
+                lineHeight: 1.4,
+              }}
+            >
+              Institutional inquiries, governance & strategic partnerships
+            </p>
+          </a>
+        </div>
+
+        {/* Separator */}
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '16px',
+            marginBottom: '44px',
+            opacity: revealed ? 1 : 0,
+            transition: 'opacity 0.8s ease 0.3s',
+          }}
+        >
+          <div style={{ flex: 1, height: '1px', background: 'linear-gradient(90deg, transparent, rgba(201, 168, 124, 0.2))' }} />
+          <span
+            style={{
+              fontFamily: 'var(--font-mono)',
+              fontSize: '0.62rem',
+              letterSpacing: '0.2em',
+              color: 'var(--amber-spruce)',
+              textTransform: 'uppercase',
+              opacity: 0.7,
+            }}
+          >
+            Or Submit a Session Request
+          </span>
+          <div style={{ flex: 1, height: '1px', background: 'linear-gradient(90deg, rgba(201, 168, 124, 0.2), transparent)' }} />
+        </div>
 
         {/* Form */}
         {!submitted ? (
