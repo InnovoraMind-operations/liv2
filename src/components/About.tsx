@@ -97,7 +97,7 @@ export default function About() {
 
           <div style={{ marginTop: '36px', textAlign: 'center' }}>
             <a
-              href="/about"
+              href="/about_us"
               className="btn-brass"
               style={{
                 fontSize: '0.9rem',

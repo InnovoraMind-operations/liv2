@@ -161,7 +161,7 @@ export default function Footer() {
             </h4>
             <nav aria-label="Footer studio links">
               {[
-                { label: 'About Us', href: '/about' },
+                { label: 'About Us', href: '/about_us' },
                 { label: 'Our Work', href: '/#credibility' },
                 { label: 'Process', href: '/#process' },
                 { label: 'Book a Session', href: '/#contact' },

@@ -16,7 +16,7 @@ export default function Navbar() {
   }, []);
 
   const links = [
-    { href: '/about', label: 'About Us', active: pathname === '/about' },
+    { href: '/about_us', label: 'About Us', active: pathname === '/about_us' },
     { href: isHome ? '#services' : '/#services', label: 'Services' },
     { href: isHome ? '#credibility' : '/#credibility', label: 'Our Work' },
     { href: isHome ? '#process' : '/#process', label: 'Process' },
