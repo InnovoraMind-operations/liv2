@@ -1,51 +1,40 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
+import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
-// Leadership team data adapted for Vorqentra Labs
+// Leadership team data
 const leaders = [
   {
-    name: 'Dr. Julian Vance',
-    role: 'Founder & Chief AI Architect',
-    tag: 'Executive Leadership',
-    bio: 'Pioneered custom deep learning architectures and transformer optimization for high-stakes enterprise applications. Combines deep academic research with hands-on systems engineering to guide Vorqentra Labs’ technical vision.',
-    initials: 'JV',
+    name: 'Wiktoria Gromowa-Cieślik',
+    role: 'Director',
+    image: '/Images/Image1.png',
+    facePos: 'center 18%',
   },
   {
-    name: 'Dr. Walida Ounruean',
-    role: 'Director & Principal Research Scientist',
-    tag: 'Research & Strategy',
-    bio: 'Leads Vorqentra Labs with a dedicated focus on scientific excellence. Bridges the gap between state-of-the-art computational theory and practical industry applications, fostering resilient, AI-driven growth.',
-    initials: 'WO',
+    name: 'Dr. Dina Alkhodary',
+    role: 'Strategy Director',
+    image: '/Images/Image4.png',
+    facePos: 'center 18%',
   },
   {
-    name: 'Dr. Zoha Rahman',
-    role: 'Board Member & Strategy Director',
-    tag: 'Board of Directors',
-    bio: 'Brings distinguished expertise in AI strategy, big data infrastructure, and machine learning governance. Guides enterprise roadmaps and shapes transformative digital intelligence solutions across global markets.',
-    initials: 'ZR',
+    name: 'Dr. Eka Devidze',
+    role: 'Independent Director',
+    image: '/Images/Image5.png',
+    facePos: 'center 18%',
   },
   {
-    name: 'Dr. Ratna Raja Kumar Jambi',
+    name: 'Assoc. Prof. Dr. Muliati Hj. Sedek',
+    role: 'Board Member',
+    image: '/Images/Image6.png',
+    facePos: 'center 18%',
+  },
+  {
+    name: 'Nino Devidze',
     role: 'Advisory Board Member',
-    tag: 'Scientific Advisory',
-    bio: 'Brings a wealth of multidisciplinary research expertise to Vorqentra Labs’ board, steering strategic initiatives that translate complex mathematical models into real-world business advantages.',
-    initials: 'RJ',
-  },
-  {
-    name: 'Aida Mehrad',
-    role: 'Director of Innovation & Emerging Technologies',
-    tag: 'Technology Leadership',
-    bio: 'Spearheads Vorqentra Labs’ frontier research in agentic workflows, autonomous inference, and generative architectures, delivering scalable solutions that redefine enterprise operations.',
-    initials: 'AM',
-  },
-  {
-    name: 'Marcus Thorne',
-    role: 'Head of Distributed Systems & Cloud Infrastructure',
-    tag: 'Engineering',
-    bio: 'Specializes in high-throughput, low-latency computing clusters and sovereign cloud infrastructure, ensuring every model deployed operates with hardened security and 99.9%+ uptime.',
-    initials: 'MT',
+    image: '/Images/Image8.jpeg',
+    facePos: 'center 20%',
   },
 ];
 
@@ -53,31 +42,38 @@ const leaders = [
 const perspectives = [
   {
     quote:
-      'Technology is most powerful when it is rooted in academic excellence and practical purpose. We are cultivating an ecosystem of sustainable innovation that bridges today’s operational challenges with tomorrow’s algorithmic possibilities.',
-    author: 'Dr. Walida Ounruean',
-    title: 'Director & Principal Research Scientist',
-    initials: 'WO',
+      'I believe the future of enterprise belongs to those who treat technology not as a commodity, but as a carefully composed instrument — built with intention, calibrated to each organization, and measured by real outcomes.',
+    author: 'Wiktoria Gromowa-Cieślik',
+    title: 'Director',
+    image: '/Images/Image1.png',
   },
   {
     quote:
-      'Data is not merely a resource — it is the language through which the future speaks. By harnessing bespoke machine learning, we architect solutions that are not only intelligent, but genuinely transformative for enterprise bottom lines.',
-    author: 'Dr. Zoha Rahman',
-    title: 'Board Member & Strategy Director',
-    initials: 'ZR',
+      'Strategy transforms ambition into advantage. By aligning advanced AI and data systems with clear business direction, we ensure every investment compounds into measurable, lasting value.',
+    author: 'Dr. Dina Alkhodary',
+    title: 'Strategy Director',
+    image: '/Images/Image4.png',
   },
   {
     quote:
-      'True digital transformation requires far more than generic wrappers — it demands architectural vision, strict governance, and the artisanal precision to make every algorithmic movement count.',
-    author: 'Dr. Julian Vance',
-    title: 'Founder & Chief AI Architect',
-    initials: 'JV',
+      'Independence gives us clarity. Our commitment is to objective oversight — ensuring that every decision, every system, and every result is tested against the highest standards of integrity and value creation.',
+    author: 'Dr. Eka Devidze',
+    title: 'Independent Director',
+    image: '/Images/Image5.png',
   },
   {
     quote:
-      'Innovation is the relentless pursuit of superior solutions. By approaching emerging technologies with an open and strategic mindset, we redefine what is possible and compose a resilient digital future.',
-    author: 'Aida Mehrad',
-    title: 'Director of Innovation & Emerging Tech',
-    initials: 'AM',
+      'Excellence begins with rigorous foundations. Through academic depth and disciplined engineering, we build intelligent systems that stand on proven science and perform under real-world pressure.',
+    author: 'Assoc. Prof. Dr. Muliati Hj. Sedek',
+    title: 'Board Member',
+    image: '/Images/Image6.png',
+  },
+  {
+    quote:
+      'Innovation flourishes where curiosity meets discipline. By mentoring and empowering teams, we create cultures where intelligent ideas are not only imagined, but realized at scale.',
+    author: 'Nino Devidze',
+    title: 'Advisory Board Member',
+    image: '/Images/Image8.jpeg',
   },
 ];
 
@@ -114,7 +110,8 @@ export default function AboutView() {
   const heroRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    setRevealed(true);
+    const frame = requestAnimationFrame(() => setRevealed(true));
+    return () => cancelAnimationFrame(frame);
   }, []);
 
   return (
@@ -786,8 +783,10 @@ export default function AboutView() {
           <div
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))',
-              gap: '28px',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+              gap: '42px 40px',
+              maxWidth: '1000px',
+              margin: '0 auto',
             }}
           >
             {leaders.map((leader, i) => (
@@ -795,15 +794,9 @@ export default function AboutView() {
                 key={i}
                 className="wood-panel"
                 style={{
-                  padding: '36px 30px',
-                  borderRadius: '4px',
-                  border: '1px solid rgba(201,168,124,0.16)',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'space-between',
-                  transition: 'all 0.3s ease',
-                  position: 'relative',
+                  borderRadius: '6px',
                   overflow: 'hidden',
+                  transition: 'all 0.3s ease',
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.borderColor = 'rgba(201,168,124,0.45)';
@@ -814,102 +807,100 @@ export default function AboutView() {
                   e.currentTarget.style.boxShadow = 'none';
                 }}
               >
-                <div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '20px' }}>
-                    {/* Golden Initials Avatar Badge */}
-                    <div
-                      style={{
-                        width: '56px',
-                        height: '56px',
-                        borderRadius: '50%',
-                        background: 'linear-gradient(135deg, #1e1208 0%, #3D2817 100%)',
-                        border: '2px solid var(--amber-spruce)',
-                        boxShadow: '0 0 16px rgba(201,168,124,0.3)',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        fontFamily: 'var(--font-brand)',
-                        fontSize: '1.2rem',
-                        fontWeight: 700,
-                        color: 'var(--amber-spruce)',
-                        letterSpacing: '0.05em',
-                        flexShrink: 0,
-                      }}
-                    >
-                      {leader.initials}
-                    </div>
-
-                    <div>
-                      <h4
-                        style={{
-                          fontFamily: 'var(--font-serif)',
-                          fontSize: '1.35rem',
-                          fontWeight: 700,
-                          color: 'var(--cream-rosette)',
-                          lineHeight: 1.2,
-                        }}
-                      >
-                        {leader.name}
-                      </h4>
-                      <div
-                        style={{
-                          fontFamily: 'var(--font-mono)',
-                          fontSize: '0.68rem',
-                          color: 'var(--amber-spruce)',
-                          letterSpacing: '0.08em',
-                          marginTop: '3px',
-                        }}
-                      >
-                        {leader.role}
-                      </div>
-                    </div>
-                  </div>
-
-                  <p
-                    style={{
-                      fontFamily: 'var(--font-sans)',
-                      fontSize: '0.88rem',
-                      color: 'var(--cream-dim)',
-                      lineHeight: 1.7,
-                      opacity: 0.85,
-                      marginBottom: '20px',
-                    }}
-                  >
-                    {leader.bio}
-                  </p>
-                </div>
-
+                {/* Leader Photo */}
                 <div
                   style={{
-                    borderTop: '1px solid rgba(201,168,124,0.08)',
-                    paddingTop: '12px',
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
+                    width: '100%',
+                    height: '320px',
+                    position: 'relative',
+                    overflow: 'hidden',
+                    background:
+                      'linear-gradient(180deg, #24160c 0%, #0d0804 100%)',
                   }}
                 >
-                  <span
+                  <img
+                    src={leader.image}
+                    alt={leader.name}
+                    loading={i < 2 ? 'eager' : 'lazy'}
                     style={{
-                      fontFamily: 'var(--font-mono)',
-                      fontSize: '0.62rem',
-                      color: 'var(--cream-dim)',
-                      opacity: 0.5,
-                      textTransform: 'uppercase',
-                      letterSpacing: '0.1em',
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover',
+                      objectPosition: leader.facePos || 'center 20%',
+                      display: 'block',
+                      transition: 'transform 0.55s ease',
                     }}
-                  >
-                    {leader.tag}
-                  </span>
-                  <span
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.transform = 'scale(1.045)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.transform = 'scale(1)';
+                    }}
+                  />
+                  <div
                     style={{
-                      fontFamily: 'var(--font-mono)',
-                      fontSize: '0.62rem',
+                      position: 'absolute',
+                      inset: 0,
+                      background:
+                        'linear-gradient(180deg, transparent 45%, rgba(7,4,2,0.96) 100%)',
+                      pointerEvents: 'none',
+                    }}
+                  />
+                  <div
+                    style={{
+                      position: 'absolute',
+                      top: '12px',
+                      left: '12px',
+                      width: '34px',
+                      height: '34px',
+                      borderRadius: '50%',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      background: 'rgba(10, 6, 3, 0.78)',
+                      backdropFilter: 'blur(8px)',
+                      border: '1px solid rgba(201,168,124,0.45)',
                       color: 'var(--amber-spruce)',
-                      letterSpacing: '0.05em',
+                      fontFamily: 'var(--font-mono)',
+                      fontSize: '0.6rem',
+                      letterSpacing: '0.08em',
+                      zIndex: 2,
                     }}
                   >
-                    Vorqentra Research
-                  </span>
+                    {String(i + 1).padStart(2, '0')}
+                  </div>
+                </div>
+
+                {/* Name + Post */}
+                <div
+                  style={{
+                    padding: '26px 30px 28px',
+                    textAlign: 'center',
+                  }}
+                >
+                  <h4
+                    style={{
+                      fontFamily: 'var(--font-serif)',
+                      fontSize: '1.3rem',
+                      fontWeight: 700,
+                      color: 'var(--cream-rosette)',
+                      lineHeight: 1.3,
+                      margin: '0 0 6px',
+                    }}
+                  >
+                    {leader.name}
+                  </h4>
+                  <div
+                    style={{
+                      fontFamily: 'var(--font-mono)',
+                      fontSize: '0.7rem',
+                      color: 'var(--amber-spruce)',
+                      letterSpacing: '0.08em',
+                      lineHeight: 1.4,
+                    }}
+                  >
+                    {leader.role}
+                  </div>
                 </div>
               </div>
             ))}
@@ -1010,22 +1001,26 @@ export default function AboutView() {
               <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
                 <div
                   style={{
-                    width: '42px',
-                    height: '42px',
+                    width: '46px',
+                    height: '46px',
                     borderRadius: '50%',
                     background: 'rgba(201,168,124,0.1)',
                     border: '1px solid var(--amber-spruce)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    fontFamily: 'var(--font-brand)',
-                    fontSize: '0.9rem',
-                    color: 'var(--amber-spruce)',
-                    fontWeight: 700,
+                    overflow: 'hidden',
                     flexShrink: 0,
                   }}
                 >
-                  {item.initials}
+                  <img
+                    src={item.image}
+                    alt={item.author}
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover',
+                      objectPosition: 'center 25%',
+                      display: 'block',
+                    }}
+                  />
                 </div>
                 <div>
                   <div
@@ -1231,9 +1226,9 @@ export default function AboutView() {
             our master craftsmen are ready.
           </p>
 
-          <a href="/#contact" className="btn-brass" style={{ fontSize: '1rem', padding: '16px 40px' }}>
-            Book an Architectural Session
-          </a>
+<Link href="/#contact" className="btn-brass" style={{ fontSize: '1rem', padding: '16px 40px' }}>
+    Book an Architectural Session
+  </Link>
         </div>
       </section>
 

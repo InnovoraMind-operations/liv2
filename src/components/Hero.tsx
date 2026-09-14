@@ -24,7 +24,10 @@ export default function Hero() {
   const [mounted, setMounted] = useState(false);
   const animRef = useRef<number>(0);
 
-  useEffect(() => { setMounted(true); }, []);
+  useEffect(() => {
+    const frame = requestAnimationFrame(() => setMounted(true));
+    return () => cancelAnimationFrame(frame);
+  }, []);
 
   // Strum animation on mount
   useEffect(() => {

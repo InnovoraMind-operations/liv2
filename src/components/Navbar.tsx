@@ -1,5 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
+import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 export default function Navbar() {
@@ -15,7 +16,7 @@ export default function Navbar() {
   }, []);
 
   const links = [
-    { href: '/about', label: 'About', active: pathname === '/about' },
+    { href: '/about', label: 'About Us', active: pathname === '/about' },
     { href: isHome ? '#services' : '/#services', label: 'Services' },
     { href: isHome ? '#credibility' : '/#credibility', label: 'Our Work' },
     { href: isHome ? '#process' : '/#process', label: 'Process' },
@@ -42,7 +43,7 @@ export default function Navbar() {
         aria-label="Main navigation"
       >
         {/* Logo */}
-        <a
+        <Link
           href="/"
           style={{
             fontFamily: 'var(--font-brand)',
@@ -74,7 +75,7 @@ export default function Navbar() {
           <span>
             Vorqentra <span style={{ fontStyle: 'italic' }}>Labs</span>
           </span>
-        </a>
+        </Link>
 
         {/* Desktop links */}
         <div style={{ display: 'flex', gap: '36px', alignItems: 'center' }} className="nav-desktop">

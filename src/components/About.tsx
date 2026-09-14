@@ -92,7 +92,7 @@ export default function About() {
               lineHeight: 1.8,
             }}
           >
-            We don't just write code; we compose intelligent systems with precision and care. Whether you need generative architectures, predictive models, or deep data insights, we orchestrate the solution so you can focus on the music.
+            We don&apos;t just write code; we compose intelligent systems with precision and care. Whether you need generative architectures, predictive models, or deep data insights, we orchestrate the solution so you can focus on the music.
           </p>
 
           <div style={{ marginTop: '36px', textAlign: 'center' }}>
